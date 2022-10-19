@@ -10,7 +10,7 @@ int ThirdNumber(int num)
 {
     int res = -1;
     num = Math.Abs(num);
-    while (num % 1000 > 100)
+    while (num % 1000 >= 100)
     {
         res = num % 10;
         num = num / 10;
