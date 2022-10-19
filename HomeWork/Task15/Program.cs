@@ -4,10 +4,10 @@
 // 7 -> да
 // 1 -> нет
 
-string Day(int num)
+bool Day(int num)
 {
-    string result = "Нет";
-    if (num > 5) result = "Да";
+    bool result = false;
+    if (num > 5) result = true;
     return result;
 }
 
