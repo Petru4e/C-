@@ -6,7 +6,7 @@
 // 18 20
 // 15 18
 
-int[,] firstArray2d = new int[new Random().Next(1, 5), new Random().Next(3, 4)];
+int[,] firstArray2d = new int[new Random().Next(1, 5), new Random().Next(3, 5)];
 int[,] secondArray2d = new int[new Random().Next(3, 4), new Random().Next(1, 5)];
 int maxValue = 10;
 int minVaue = 1;
@@ -19,33 +19,32 @@ Console.WriteLine("Second matrix");
 FillArray(secondArray2d, maxValue, minVaue);
 PrintArray(secondArray2d);
 
-
-MatrixMultiplication(firstArray2d,secondArray2d);
-
-
-void MatrixMultiplication(int [,] firstMatrix, int [,] secondMatrix)
+if (firstArray2d.GetLength(1) != secondArray2d.GetLength(0))
 {
-    if(firstMatrix.GetLength(1)==secondMatrix.GetLength(0))
-    {
-        int[,] MultMatrix= new int[firstMatrix.GetLength(0),secondMatrix.GetLength(1)];
-        for (int i = 0; i < firstMatrix.GetLength(0); i++)
-        {
-            for (int j = 0; j < firstMatrix.GetLength(1); j++)
-            {
-                for (int n = 0; n < secondMatrix.GetLength(1); n++)
-                {
-                    MultMatrix[i,n]=MultMatrix[i,n]+(firstMatrix[i,j]*secondMatrix[j,n]);
-                }
-            }
-        }
-        Console.WriteLine("Mult Matrix");
-        PrintArray(MultMatrix);
-    }
-    else Console.WriteLine("These matrices cannot be multiplied");
+    Console.WriteLine("These matrices cannot be multiplied");
+}
+else
+{
+    int[,] multyMatrix = MatrixMultiplication(firstArray2d, secondArray2d);
+    Console.WriteLine("Mult Matrix");
+    PrintArray(multyMatrix);
 }
 
-
-
+int[,] MatrixMultiplication(int[,] firstMatrix, int[,] secondMatrix)
+{
+    int[,] multMatrix = new int[firstMatrix.GetLength(0), secondMatrix.GetLength(1)];
+    for (int i = 0; i < firstMatrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < firstMatrix.GetLength(1); j++)
+        {
+            for (int n = 0; n < secondMatrix.GetLength(1); n++)
+            {
+                multMatrix[i, n] = multMatrix[i, n] + (firstMatrix[i, j] * secondMatrix[j, n]);
+            }
+        }
+    }
+    return multMatrix;
+}
 
 void PrintArray(int[,] matrix)
 {
