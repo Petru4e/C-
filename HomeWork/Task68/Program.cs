@@ -13,6 +13,6 @@ Console.WriteLine(FunkAnkerman(m,n));
 int FunkAnkerman(int numM, int numN)
 {
     if (numM == 0) return numN + 1;
-    else if ((numM != 0) && (numN == 0)) return FunkAnkerman(numM - 1, 1);
-    else return FunkAnkerman(numM - 1, FunkAnkerman(numM, numN - 1));
+    if ((numM != 0) && (numN == 0)) return FunkAnkerman(numM - 1, 1);
+    return FunkAnkerman(numM - 1, FunkAnkerman(numM, numN - 1));
 }
